@@ -87,10 +87,9 @@ if __name__ == "__main__":
 		# wait until we need to post the reminder
 		print("Send out the reminder at "+config.get("JournalBot", "reminder_time"))
 		reminder_at = get_next_time(config.get("JournalBot", "reminder_time"))
-		#sleep_until(reminder_at)
-		#send_message(client, channel_id, config.get("JournalBot", "reminder"))
+		sleep_until(reminder_at)
+		send_message(client, channel_id, config.get("JournalBot", "reminder"))
 
-		time.sleep(5)
 		# wait until we need to check who responded
 		print("Send out the warning at "+config.get("JournalBot", "warning_time"))
 		warning_at = get_next_time(config.get("JournalBot", "warning_time"))
