@@ -1,0 +1,14 @@
+[JournalBot]
+# OAuth token as provided by slack. This is a secret value!
+authtoken=XXXXXXX
+
+# The channel that should be monitored
+channel=journal
+
+# Reminder sent out at the reminder_time (in %H:%M format---24 hrs)
+reminder=Folks, don't forget to post a short update for today!
+reminder_time=17:30
+
+# Warning sent out at the warning_time (in %H:%M format---24hrs)
+warning=Hey {}, looks like you forgot to post your daily update. Please do so now!
+warning_time=23:30
