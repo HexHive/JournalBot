@@ -6,6 +6,7 @@ they forget.
 
 ## Changelog
 
+* 211027 v0.03 Moved to logging interface to reduce chatter/noise
 * 211027 v0.02 Fixed some bugs and implemented (cron'able) actions
 * 211026 v0.01 Initial version, as daemon
 
