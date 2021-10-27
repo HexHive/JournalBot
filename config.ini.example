@@ -12,3 +12,6 @@ reminder_time=17:30
 # Warning sent out at the warning_time (in %H:%M format---24hrs)
 warning=Hey {}, looks like you forgot to post your daily update. Please do so now!
 warning_time=23:30
+
+# Days of the week where the BOT is active (Monday=0, ..., Sunday=6)
+dow_active=01234

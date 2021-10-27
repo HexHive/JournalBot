@@ -4,6 +4,11 @@ JournalBot is a Slack bot that monitors a channel and encourages users to
 post a daily update. The bot may remind users about posting an update if
 they forget.
 
+## Changelog
+
+* 211027 v0.02 Fixed some bugs and implemented (cron'able) actions
+* 211026 v0.01 Initial version, as daemon
+
 ## Development and installation
 
 ```
@@ -22,7 +27,11 @@ $ vim config.ini
 $ python3 JournalBot.py
 
 # After testing, you can fire and forget
-$ nohup python3 JournalBot.py >> bot.log &
+$ nohup python3 JournalBot.py -d >> bot.log &
+
+# You can invoke JournalBot through cron
+$ python3 JournalBot.py --reminder
+$ python3 JournalBot.py --warning
 ```
 
 The configuration file is simple and straight forward, check out `config.ini.example` for an example.
