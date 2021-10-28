@@ -6,7 +6,7 @@ authtoken=XXXXXXX
 channel=journal
 
 # Reminder sent out at the reminder_time (in %H:%M format---24 hrs)
-reminder=Folks, don't forget to post a short update for today!
+reminder=@channel: Folks, don't forget to post a short update for today!
 reminder_time=17:30
 
 # Warning sent out at the warning_time (in %H:%M format---24hrs)
