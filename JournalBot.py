@@ -85,11 +85,11 @@ def sleep_until(target):
 ''' Main JournalBot actions '''
 ''' XXXXXXXXXXXXXXXXXXXXXXX '''
 
-def action_reminder(client, channel_id, message):
+def action_reminder(client, channel_id, reminder_text):
 	logging.info('Sending out reminder now.')
-	send_message(client, channel_id, message)
+	send_message(client, channel_id, reminder_text)
 
-def action_warning(client, channel_id, message, warning_at):
+def action_warning(client, channel_id, warning_text, warning_at):
 	# get all messages since yesterday and tick off user_ids that interacted
 	logging.info('Sending out warning now.')
 	user_ids = get_user_ids(client, channel_id)
@@ -106,7 +106,7 @@ def action_warning(client, channel_id, message, warning_at):
 		for uid in user_ids:
 			notify_list += '<@' + uid + '>, '
 		notify_list = notify_list[:-2]
-		warning = message.replace('{}', notify_list)
+		warning = warning_text.replace('{}', notify_list)
 		send_message(client, channel_id, warning)
 	logging.info('Had to warn {} of {} people'.format(len(user_ids), total))
 
