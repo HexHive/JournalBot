@@ -126,6 +126,8 @@ if __name__ == '__main__':
 		help='Send out the reminder and exit.')
 	group.add_argument('-w', '--warning', action='store_true',
 		help='Send out the warning and exit.')
+	group.add_argument('-s', '--say', type=str,
+		help='Send the following string and exit.')
 	args = parser.parse_args()
 
 	if args.verbose:
@@ -140,6 +142,7 @@ if __name__ == '__main__':
 	reminder_at = config.get('JournalBot', 'reminder_time')
 	warning = config.get('JournalBot', 'warning')
 	warning_at = config.get('JournalBot', 'warning_time')
+
 
 	# We've got an action: fire and exit
 	if args.reminder or args.warning:
@@ -158,6 +161,13 @@ if __name__ == '__main__':
 
 		# We're all done here
 		exit(0)
+
+	# We've got an action: fire and exit
+	if args.say != None:
+		# Just print out the message
+		send_message(client, channel_id, args.say)
+		exit(0)
+
 
 	# Looks like we're running in daemon mode.
 	assert args.daemon is True
