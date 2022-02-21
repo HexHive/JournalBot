@@ -89,10 +89,13 @@ def action_reminder(client, channel_id, reminder_text):
 	logging.info('Sending out reminder now.')
 	send_message(client, channel_id, reminder_text)
 
-def action_warning(client, channel_id, warning_text, warning_at):
+def action_warning(client, channel_id, warning_text, warning_at, exclude):
 	# get all messages since yesterday and tick off user_ids that interacted
 	logging.info('Sending out warning now.')
 	user_ids = get_user_ids(client, channel_id)
+	for user in exclude:
+		if user in user_ids:
+			user_ids.remove(user)
 	total = len(user_ids)
 	previous_day = warning_at - datetime.timedelta(days=1)
 	messages = get_messages(client, channel_id, previous_day)
@@ -142,6 +145,7 @@ if __name__ == '__main__':
 	reminder_at = config.get('JournalBot', 'reminder_time')
 	warning = config.get('JournalBot', 'warning')
 	warning_at = config.get('JournalBot', 'warning_time')
+	exclude_list = list(map(str.strip, config.get('JournalBot', 'exclude_warning').split(',')))
 
 
 	# We've got an action: fire and exit
@@ -157,7 +161,7 @@ if __name__ == '__main__':
 
 		elif args.warning:
 			current_warning_at = datetime.datetime.now()
-			action_warning(client, channel_id, warning, current_warning_at)
+			action_warning(client, channel_id, warning, current_warning_at, exclude_list)
 
 		# We're all done here
 		exit(0)
@@ -182,4 +186,5 @@ if __name__ == '__main__':
 		logging.info('Send out the warning at {}'.format(warning_at))
 		current_warning_at = get_next_time(warning_at)
 		sleep_until(current_warning_at)
-		action_warning(client, channel_id, warning, current_warning_at)
+		action_warning(client, channel_id, warning, current_warning_at, exclude_list)
+

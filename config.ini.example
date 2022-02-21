@@ -13,5 +13,9 @@ reminder_time=17:30
 warning=Hey {}, looks like you forgot to post your daily update. Please do so now!
 warning_time=23:30
 
+# Exclude the following user-IDs from reminders (you can view a user's ID in their profile page)
+no_reminder=U12345678, UABCDEF12
+
 # Days of the week where the BOT is active (Monday=0, ..., Sunday=6)
 dow_active=01234
+
