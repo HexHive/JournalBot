@@ -43,6 +43,7 @@ The configuration file is simple and straight forward, check out `config.ini.exa
 Create a new slack application from scratch for your workspace on the [Slack API page](https://api.slack.com/apps) and assign basic parameters such as "JournalBot" in `Basic Information`.
 
 Navigate to `OAuth & Permissions`. If your journal channel is public, you need the following scopes: `channels.history, channels.read, chat.write` (adjust accordingly for private channels).
+In the `OAuth & Permissions` you'll also be able to copy the OAuth token to be used in the configuration. Just update the `config.ini` with the right `xoxb-XXX-XXX-XXX`.
 
 You should now be good to go. You may need event subscriptions for `message.channels` 
 depending on the setup.
